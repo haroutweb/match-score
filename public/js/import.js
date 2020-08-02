@@ -13,7 +13,7 @@ $(function () {
         parallelUploads: 1,
         maxFilesize: 50, // MB
         maxFiles:1,
-        acceptedFiles: '.xls',
+        acceptedFiles: '.xls, .xlsx',
         success: function (file, response) {
             response = JSON.parse(response);
 
