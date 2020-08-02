@@ -1,0 +1,7 @@
+/vendor/
+/public/dist
+/storage
+/composer.lock
+/package-lock.json
+.idea
+/node_modules

@@ -1,0 +1,27 @@
+{
+  "name": "haroutweb/match-score",
+  "type": "library",
+  "description": "Calculate average match score",
+  "keywords": ["upload", "employee"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Harut Grigoryan",
+      "email": "haroutweb@yandex.com"
+    }
+  ],
+  "config": {
+    "optimize-autoloader": true
+  },
+  "require": {
+    "php": ">=7.1",
+    "twig/twig": "~2.0",
+    "phpoffice/phpspreadsheet": "^1.14"
+  },
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "application/module/Framework/src",
+      "App\\": "application/module/App/src"
+    }
+  }
+}

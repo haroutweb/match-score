@@ -1,0 +1,50 @@
+{% extends 'layout.twig' %}
+
+{% block cssFiles %}
+    <link rel="stylesheet" href="/css/plugins/dropzone.min.css" type="text/css" />
+{% endblock %}
+
+{% block jsFiles %}
+    <script src="/js/plugins/dropzone.min.js"></script>
+    <script src="/js/import.js"></script>
+{% endblock %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <form method="post" id="employee-form" data-upload="/employee/upload">
+                    <div class="form-header">
+                        <h2>Import list of employees</h2>
+                    </div>
+                    <div class="form-error"></div>
+                    <div class="form-body">
+                        <div class="form-group dropzone-container">
+                            <div class="well dropzone" id="importDropzone"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <table id="average-members">
+                    <tbody></tbody>
+                </table>
+
+                <table id="all-members">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Email</td>
+                            <td>Division</td>
+                            <td>Age</td>
+                            <td>Timezone</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

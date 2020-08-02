@@ -1,0 +1,15 @@
+<?php
+
+if (php_sapi_name() != 'cli') {
+    echo 'Interface type not permitted';
+    exit;
+}
+
+chdir(dirname(__DIR__));
+define('DS', DIRECTORY_SEPARATOR);
+define('APP_BASE_PATH', dirname(__DIR__) . DS . 'application' . DS);
+define('INTERFACE_TYPE', 'cli');
+
+include APP_BASE_PATH . DS . '..' . DS . 'vendor' . DS .'autoload.php';
+
+\Framework\Bootstrap::init(include(APP_BASE_PATH . 'config'. DS . 'application.config.php'))->run();
