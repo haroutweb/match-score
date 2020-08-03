@@ -35,15 +35,11 @@ class EmployeeController extends HttpController
             $response = [
                 'status'            => 'success',
                 'members'           => $result['members'],
+                'average'           => $result['average'],
                 'topAverageCouples' => $result['topAverageCouples'],
-                'icon'              => '/images/icons/csv-icon.png',
-                'fileName'          => $result['topAverageCouples'],
+                'icon'              => '/images/xls-icon.png',
+                'fileName'          => htmlspecialchars($result['fileName'] . ' (' . $result['fileSize'] . ' B)'),
             ];
-            $response['members']           = $result['members'];
-            $response['average']           = $result['average'];
-            $response['topAverageCouples'] = $result['topAverageCouples'];
-            $response['icon']              = '/images/xls-icon.png';
-            $response['fileName']          = htmlspecialchars($result['fileName'] . ' (' . $result['fileSize'] . ' B)');
         } catch (\Throwable $e) {
             $response['message'] = $e->getMessage();
         }
