@@ -87,12 +87,21 @@ class ImportService
 
             $average = $couples['averages'];
             unset($couples['averages']);
-            $average = $average / count($couples);
+
+            if (count($sheetData) % 2 == 0) {
+                $average = $average / count($couples);
+            } else {
+                $average = $average / (count($couples) - 1);
+            }
 
             $maxAverage = [];
 
             foreach ($couples as $value) {
                 [$first, $second] = explode('-', $value);
+
+                if (!isset($sheetData[$first]) || !isset($sheetData[$second])) {
+                    continue;
+                }
 
                 $maxAverage[] = $sheetData[$first]['A'] . ' - ' . $sheetData[$second]['A'];
             }
@@ -161,10 +170,18 @@ class ImportService
 
         for ($i=0; $i < count($home) + count($away)-1; $i++){
             for ($j=0; $j < count($home); $j++){
+                if (!isset($home[$j]) || !isset($away[$j])) {
+                    continue;
+                }
+
                 $round[$i][$j] = $home[$j] . '-' . $away[$j];
 
                 if (!isset($round[$i]['averages'])) {
                     $round[$i]['averages'] = 0;
+                }
+
+                if (!isset($averages[$home[$j] . '-' . $away[$j]])) {
+                    continue;
                 }
 
                 $round[$i]['averages'] += $averages[$home[$j] . '-' . $away[$j]];
